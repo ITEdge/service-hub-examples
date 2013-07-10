@@ -20,8 +20,7 @@
       (validators-util/validate-unique-fields attributes user-handler #{:username})
       (validators-util/validate-insert-update-relations attributes :roles role-handler)))
   (validate-delete-entity [_ id]
-    (util/pipeline-statements
-      nil))
+    nil)
   (validate-list-entities [_ criteria from to]
     (util/pipeline-statements
       (validators-util/validate-list-range from to criteria user-handler))))
@@ -64,8 +63,7 @@
       (validators-util/validate-update-fields attributes #{:product_name :price :order_number})
       (validators-util/validate-unique-fields attributes product-handler #{:product_name :order_number})))
   (validate-delete-entity [_ id]
-    (util/pipeline-statements
-      nil))
+    nil)
   (validate-list-entities [_ criteria from to]
     (util/pipeline-statements
       (validators-util/validate-list-range from to criteria product-handler))))
