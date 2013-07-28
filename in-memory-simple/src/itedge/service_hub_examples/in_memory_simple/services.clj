@@ -1,9 +1,9 @@
-(ns itedge.service-hub-examples.in-memory.services
+(ns itedge.service-hub-examples.in-memory-simple.services
   (:use itedge.service-hub.core.handlers
         itedge.service-hub.core.validators
         itedge.service-hub.core.services)
-  (:require [itedge.service-hub-examples.in-memory.handlers :as handlers]
-            [itedge.service-hub-examples.in-memory.validators :as validators]
+  (:require [itedge.service-hub-examples.in-memory-simple.handlers :as handlers]
+            [itedge.service-hub-examples.in-memory-simple.validators :as validators]
             [itedge.service-hub.core.services-util :as services-util]))
 
 (def product-validator (validators/->ProductValidator handlers/product-handler))

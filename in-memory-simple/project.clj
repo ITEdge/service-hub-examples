@@ -1,4 +1,4 @@
-(defproject itedge/service-hub-examples.in-memory "1.0.0"
+(defproject itedge/service-hub-examples.in-memory-simple "1.0.0"
   :description "Example project with in-memory handlers without users"
   :min-lein-version "2.0.0"
   :url "https://github.com/ITEdge/ServiceHub"

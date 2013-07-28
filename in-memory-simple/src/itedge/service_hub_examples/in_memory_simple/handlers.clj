@@ -1,4 +1,4 @@
-(ns itedge.service-hub-examples.in-memory.handlers
+(ns itedge.service-hub-examples.in-memory-simple.handlers
   (:use itedge.service-hub.core.handlers)
   (:require [itedge.service-hub.core.handlers-memory :as handlers-memory]))
 
