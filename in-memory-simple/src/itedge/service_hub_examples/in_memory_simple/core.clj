@@ -1,4 +1,4 @@
-(ns itedge.service-hub-examples.in-memory.core
+(ns itedge.service-hub-examples.in-memory-simple.core
   (:use itedge.service-hub.core.handlers
         itedge.service-hub.core.services
         compojure.core
@@ -10,8 +10,8 @@
                          resource])
   (:require [clojure.string :as string]
             [ring.adapter.jetty :as jetty]
-            [itedge.service-hub-examples.in-memory.handlers :as handlers]
-            [itedge.service-hub-examples.in-memory.services :as services]
+            [itedge.service-hub-examples.in-memory-simple.handlers :as handlers]
+            [itedge.service-hub-examples.in-memory-simple.services :as services]
             [compojure.handler :as handler]
             [itedge.service-hub.core.util :as util]
             [itedge.service-hub.http-ring.routes-util :as routes-util]

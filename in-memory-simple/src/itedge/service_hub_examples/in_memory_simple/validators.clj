@@ -1,4 +1,4 @@
-(ns itedge.service-hub-examples.in-memory.validators
+(ns itedge.service-hub-examples.in-memory-simple.validators
   (:use itedge.service-hub.core.validators)
   (:require [itedge.service-hub.core.util :as util]
             [itedge.service-hub.core.validators-util :as validators-util]))

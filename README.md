@@ -1,27 +1,9 @@
 service-hub-examples
 ====================
 
-This is simple example for service-hub framework. Here you can create simple example without unnecesary fuss.
+This project contains simple examples for service-hub framework.
 
 Install
 =======
 
-You can install this example by cloning service-hub repository and running
-
-```bash
-lein sub install
-```
-
-on it. Next you need to clone this repository, run
-
-```bash
-lein deps
-```
-
-and then running lein repl. In repl you 
-
-```clojure
-(use 'itedge.service-hub-examples.in-memory.core)
-```
-
-to load server.
+You can install this example by cloning service-hub repository and running lein sub install on it. Preferably you should try in-memory-simple first. Both examples create in memory database accesible on https://localhost/products using GET and other similar methods.
