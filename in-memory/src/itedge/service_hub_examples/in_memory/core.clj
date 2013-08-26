@@ -1,23 +1,23 @@
 (ns itedge.service-hub-examples.in-memory.core
-  (:use itedge.service-hub.core.handlers
-        itedge.service-hub.core.services
-        compojure.core
-        itedge.service-hub.http-ring.middleware.translate-params
-        itedge.service-hub.http-ring.middleware.create-authentication
-        [ring.middleware params
-                         keyword-params
-                         nested-params
-                         file-info
-                         resource])
   (:require [clojure.string :as string]
             [ring.adapter.jetty :as jetty]
+            [itedge.service-hub.core.handlers :refer :all]
+            [itedge.service-hub.core.services :refer :all]
             [itedge.service-hub-examples.in-memory.handlers :as handlers]
             [itedge.service-hub-examples.in-memory.services :as services]
+            [compojure.core :refer :all]
             [compojure.handler :as handler]
             [itedge.service-hub.core.security :as security]
             [itedge.service-hub.core.util :as util]
             [itedge.service-hub.http-ring.routes-util :as routes-util]
-            [itedge.service-hub.http-ring.content-util :as content-util]))
+            [itedge.service-hub.http-ring.content-util :as content-util]
+            [itedge.service-hub.http-ring.middleware.translate-params :refer :all]
+            [itedge.service-hub.http-ring.middleware.create-authentication :refer :all]
+            [ring.middleware.params :refer :all]
+            [ring.middleware.keyword-params :refer :all]
+            [ring.middleware.nested-params :refer :all]
+            [ring.middleware.file-info :refer :all]
+            [ring.middleware.resource :refer :all]))
 
 (def user-service (services/->UserService))
 (def role-service (services/->RoleService))
@@ -33,7 +33,7 @@
          (when result
            (update-in result [:roles] (fn [roles] 
                                         (into #{} (map (fn [role-id] 
-                                                         (:rolename (handle-find-entity handlers/role-handler role-id))) roles)))))))
+                                                         (keyword (:rolename (handle-find-entity handlers/role-handler role-id)))) roles)))))))
       ((fn [result]
          (when result
            (select-keys result [:id :username :password :roles]))))))

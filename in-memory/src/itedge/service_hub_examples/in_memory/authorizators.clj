@@ -1,6 +1,6 @@
 (ns itedge.service-hub-examples.in-memory.authorizators
-  (:use itedge.service-hub.core.authorizators)
-  (:require [itedge.service-hub.core.util :as util]
+  (:require [itedge.service-hub.core.authorizators :refer :all]
+            [itedge.service-hub.core.util :as util]
             [itedge.service-hub.core.authorizators-util :as auth-util]))
 
 (deftype UserAuthorizator []

@@ -1,6 +1,6 @@
 (ns itedge.service-hub-examples.in-memory.handlers
-  (:use itedge.service-hub.core.handlers)
-  (:require [itedge.service-hub.core.handlers-memory :as handlers-memory]))
+  (:require [itedge.service-hub.core.handlers :refer :all]
+            [itedge.service-hub.core.handlers-memory :as handlers-memory]))
 
 (def role-handler (handlers-memory/create-memory-handler [{:rolename :admin :users [1]}
                                                           {:rolename :user :users [1]}] :id))
