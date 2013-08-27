@@ -6,13 +6,21 @@ HTTP BASIC authentication and validation of REST calls.
 ## Default data
 The application is configured to provide data for 3 entities: 
 
-* Users (GET /users - one default user with username 'admin', password 'admin' and assigned roles ```:user``` and ```:admin```)
+* Users (GET /users - one default user with username 'admin', password 'admin' and assigned roles ```clojure
+                                                                                                  :user
+                                                                                                  ``` and 
+                                                                                                  ```clojure
+                                                                                                  :admin
+                                                                                                  ```)
 * Roles (GET /roles - two default roles with rolenames 'user' and 'admin')
 * Products (GET /products - no product by default)
 
 ## Validation
 
-Each REST call is validated by various validator functions, dig into namespace itedge.service-hub-examples.in-memory.validators.clj to see more.
+Each REST call is validated by various validator functions, dig into namespace ```clojure
+                                                                               itedge.service-hub-examples.in-memory.validators.clj
+                                                                               ``` 
+                                                                               to see more.
 
 ## Authentication
 
@@ -27,5 +35,16 @@ For example for the default admin/admin user, the Authorization header is:
 ## Default port to acces service  
 
 The most convient way to run this example is to type lein repl at the project root and then type and submit 
-```(use 'itedge.service-hub-examples.in-memory.core)``` - this will start the development server at http://localhost:3000,
-to stop the server, type and submit ```(.stop server)```, to start it again type and submit ```(.start server)```.
+```clojure
+(use 'itedge.service-hub-examples.in-memory.core)
+``` 
+- this will start the development server at http://localhost:3000,
+to stop the server, type and submit 
+```clojure
+(.stop server)
+```
+, to start it again type and submit 
+```clojure
+(.start server)
+```
+.
