@@ -20,10 +20,11 @@ and
 
 ## Validation
 
-Each REST call is validated by various validator functions, dig into namespace ```clojure
-                                                                               itedge.service-hub-examples.in-memory.validators.clj
-                                                                               ``` 
-                                                                               to see more.
+Each REST call is validated by various validator functions, dig into namespace 
+```clojure
+itedge.service-hub-examples.in-memory.validators.clj
+``` 
+to see more.
 
 ## Authentication
 
