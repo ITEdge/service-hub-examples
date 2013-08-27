@@ -6,12 +6,15 @@ HTTP BASIC authentication and validation of REST calls.
 ## Default data
 The application is configured to provide data for 3 entities: 
 
-* Users (GET /users - one default user with username 'admin', password 'admin' and assigned roles ```clojure
-                                                                                                  :user
-                                                                                                  ``` and 
-                                                                                                  ```clojure
-                                                                                                  :admin
-                                                                                                  ```)
+* Users (GET /users - one default user with username 'admin', password 'admin' and assigned roles: 
+```clojure
+:user
+``` 
+and 
+```clojure
+:admin
+```
+)
 * Roles (GET /roles - two default roles with rolenames 'user' and 'admin')
 * Products (GET /products - no product by default)
 
