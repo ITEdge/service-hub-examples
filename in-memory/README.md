@@ -7,13 +7,17 @@ HTTP BASIC authentication and validation of REST calls.
 The application is configured to provide data for 3 entities: 
 
 * Users (GET /users - one default user with username 'admin', password 'admin' and assigned roles: 
+
 ```clojure
 :user
 ``` 
+
 and 
+
 ```clojure
 :admin
 ```
+
 )
 * Roles (GET /roles - two default roles with rolenames 'user' and 'admin')
 * Products (GET /products - no product by default)
@@ -44,11 +48,15 @@ The most convient way to run this example is to type lein repl at the project ro
 ``` 
 - this will start the development server at http://localhost:3000,
 to stop the server, type and submit 
+
 ```clojure
 (.stop server)
 ```
+
 , to start it again type and submit 
+
 ```clojure
 (.start server)
 ```
+
 .
