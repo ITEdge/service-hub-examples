@@ -1,5 +1,6 @@
 (ns itedge.service-hub-examples.in-memory.core
   (:require [clojure.string :as string]
+            [clojure.tools.reader.edn :as edn]
             [ring.adapter.jetty :as jetty]
             [itedge.service-hub.core.handlers :refer :all]
             [itedge.service-hub.core.services :refer :all]
@@ -19,10 +20,6 @@
             [ring.middleware.file-info :refer :all]
             [ring.middleware.resource :refer :all]))
 
-(def user-service (services/->UserService))
-(def role-service (services/->RoleService))
-(def product-service (services/->ProductService))
-
 (defn user-func
   "Uses user service to retrieve user login information and transforms assigned roles into keyword set.
    If provided username is not in database, returns nil."
@@ -41,9 +38,9 @@
 (defroutes app-routes
   (GET "/login" [:as request]
       (routes-util/check-auth request content-util/craft-edn-response))
-  (routes-util/scaffold-crud-routes "/users" user-service :id read-string content-util/craft-edn-response)
-  (routes-util/scaffold-crud-routes "/roles" role-service :id read-string content-util/craft-edn-response)
-  (routes-util/scaffold-crud-routes "/products" product-service :id read-string content-util/craft-edn-response))
+  (routes-util/scaffold-crud-routes "/users" services/user-service :id edn/read-string content-util/craft-edn-response)
+  (routes-util/scaffold-crud-routes "/roles" services/role-service :id edn/read-string content-util/craft-edn-response)
+  (routes-util/scaffold-crud-routes "/products" services/product-service :id edn/read-string content-util/craft-edn-response))
 
 (def credentials-fn (partial security/bcrypt-credential-fn user-func))
 

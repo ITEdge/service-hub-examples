@@ -21,7 +21,7 @@
       (validators-util/validate-insert-update-relations attributes role-key role-handler)))
   (validate-delete-entity [_ id]
     nil)
-  (validate-list-entities [_ criteria from to]
+  (validate-list-entities [_ criteria sort-attrs from to]
     (util/pipeline-statements
       (validators-util/validate-list-range from to criteria user-handler))))
 
@@ -44,7 +44,7 @@
   (validate-delete-entity [_ id]
     (util/pipeline-statements
       (validators-util/validate-delete-relations id role-key user-handler)))
-  (validate-list-entities [_ criteria from to]
+  (validate-list-entities [_ criteria sort-attrs from to]
     (util/pipeline-statements
       (validators-util/validate-list-range from to criteria role-handler))))
 
@@ -64,6 +64,6 @@
       (validators-util/validate-unique-fields attributes product-handler #{:product_name :order_number})))
   (validate-delete-entity [_ id]
     nil)
-  (validate-list-entities [_ criteria from to]
+  (validate-list-entities [_ criteria sort-attrs from to]
     (util/pipeline-statements
       (validators-util/validate-list-range from to criteria product-handler))))
