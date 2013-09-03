@@ -1,9 +1,5 @@
 (ns itedge.service-hub-examples.in-memory.services
-  (:require [itedge.service-hub.core.handlers :refer :all]
-            [itedge.service-hub.core.validators :refer :all]
-            [itedge.service-hub.core.authorizators :refer :all]
-            [itedge.service-hub.core.services :refer :all]
-            [itedge.service-hub-examples.in-memory.handlers :as handlers]
+  (:require [itedge.service-hub-examples.in-memory.handlers :as handlers]
             [itedge.service-hub-examples.in-memory.validators :as validators]
             [itedge.service-hub-examples.in-memory.authorizators :as authorizators]
             [itedge.service-hub.core.services-util :as services-util]))

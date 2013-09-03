@@ -3,7 +3,6 @@
             [clojure.tools.reader.edn :as edn]
             [ring.adapter.jetty :as jetty]
             [itedge.service-hub.core.handlers :refer :all]
-            [itedge.service-hub.core.services :refer :all]
             [itedge.service-hub-examples.in-memory.handlers :as handlers]
             [itedge.service-hub-examples.in-memory.services :as services]
             [compojure.core :refer :all]
