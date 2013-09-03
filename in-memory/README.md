@@ -20,7 +20,7 @@ and
 
 )
 * Roles (GET /roles - two default roles with rolenames 'user' and 'admin')
-* Products (GET /products - no product by default)
+* Products (GET /products - two default product with product names 'Product-1' and 'Product-2')
 
 ## Validation
 
