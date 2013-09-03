@@ -1,15 +1,36 @@
-This is an example of basic service-hub application. 
+# In-memory-simple sample
 
-In handlers namespace it creates product-handler, which defines in-memory data structure. In this case its vector of maps.
+This is an example of simple service-hub REST application with in-memory handlers and validation of REST calls.
 
-In services validators namespace it defines Product validator. It ensures that all of the operations on data structures are allowed.
+## Default data
+The application is configured to provide data for 1 entity type: 
 
-Services namespace defines ProductService, defining all necessary methods. They correspond to GET, DELETE, PUT, POST, and simple query based on criteria.
+* Products (GET /products - two default products with product names 'Product-1' and 'Product-2')
 
-Finally, running lein repl and
+## Validation
+
+Each REST call is validated by various validator functions, examine the product-validator in namespace 
+```clojure
+itedge.service-hub-examples.in-memory.core.clj
+``` 
+
+## Default port to acces service  
+
+The most convient way to run this example is to type lein repl at the project root and then type and submit 
+```clojure
+(use 'itedge.service-hub-examples.in-memory.core)
+``` 
+- this will start the development server at http://localhost:3000,
+to stop the server, type and submit 
 
 ```clojure
-(use 'itedge.service-hub-examples.in-memory-simple.core)
+(.stop server)
 ```
 
-creates server which can be accessed on http://localhost:3000 .
+, to start it again type and submit 
+
+```clojure
+(.start server)
+```
+
+.
