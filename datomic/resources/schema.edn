@@ -1,0 +1,63 @@
+[
+;; user
+{:db/id #db/id[:db.part/db]
+ :db/ident :user/username
+ :db/unique :db.unique/value
+ :db/valueType :db.type/string
+ :db/cardinality :db.cardinality/one
+ :db/fulltext true
+ :db/doc "User name"
+ :db.install/_attribute :db.part/db}
+
+{:db/id #db/id[:db.part/db]
+ :db/ident :user/password
+ :db/valueType :db.type/string
+ :db/cardinality :db.cardinality/one
+ :db/doc "User password"
+ :db.install/_attribute :db.part/db}
+ 
+{:db/id #db/id[:db.part/db]
+ :db/ident :user/roles
+ :db/valueType :db.type/ref
+ :db/cardinality :db.cardinality/many
+ :db/doc "User roles"
+ :db.install/_attribute :db.part/db}
+;; role
+{:db/id #db/id[:db.part/db]
+ :db/ident :role/users
+ :db/valueType :db.type/ref 
+ :db/cardinality :db.cardinality/many
+ :db/doc "Users assigned to this role"
+ :db.install/_attribute :db.part/db}
+ 
+{:db/id #db/id [:db.part/db]
+ :db/ident :role/rolename
+ :db/valueType :db.type/string
+ :db/cardinality :db.cardinality/one
+ :db/fulltext true
+ :db/doc "Role rolename"
+ :db.install/_attribute :db.part/db}
+;; product
+{:db/id #db/id[:db.part/db]
+ :db/ident :product/name
+ :db/valueType :db.type/string
+ :db/cardinality :db.cardinality/one
+ :db/fulltext true
+ :db/doc "Product name"
+ :db.install/_attribute :db.part/db}
+
+{:db/id #db/id [:db.part/db]
+ :db/ident :product/order-code
+ :db/valueType :db.type/string
+ :db/cardinality :db.cardinality/one
+ :db/fulltext true
+ :db/doc "Product order code"
+ :db.install/_attribute :db.part/db}
+
+{:db/id #db/id [:db.part/db]
+ :db/ident :product/price
+ :db/valueType :db.type/double
+ :db/cardinality :db.cardinality/one
+ :db/doc "Product price"
+ :db.install/_attribute :db.part/db}
+]

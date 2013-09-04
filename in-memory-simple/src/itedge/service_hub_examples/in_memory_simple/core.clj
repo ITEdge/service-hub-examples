@@ -1,6 +1,5 @@
 (ns itedge.service-hub-examples.in-memory-simple.core
-  (:require [clojure.string :as string]
-            [clojure.tools.reader.edn :as edn]
+  (:require [clojure.tools.reader.edn :as edn]
             [ring.adapter.jetty :as jetty]           
             [compojure.core :refer :all]
             [compojure.handler :as handler]

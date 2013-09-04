@@ -1,0 +1,7 @@
+[
+{:db/id #db/id[:db.part/user -1] :user/username "admin" :user/password "$2a$10$K83DHEqRZ7ZCpq0HK49lj.4XW/EvMw4XPQPSrIxWNVPsOhwFk8bHe" :user/roles #{{#db/id[:db.part/user -2]} {#db/id[:db.part/user -3]}}}
+{:db/id #db/id[:db.part/user -2] :role/users #{{#db/id[:db.part/user -1]}} :role/rolename "USER"}
+{:db/id #db/id[:db.part/user -3] :role/users #{{#db/id[:db.part/user -1]}} :role/rolename "ADMIN"}
+{:db/id #db/id[:db/part/user -4] :product/name "Product 1" :product/order-code "P1" :product/price 12.2}
+{:db/id #db/id[:db/part/user -5] :product/name "Product 2" :product/order-code "P2" :product/price 17.1}
+]
