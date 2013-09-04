@@ -1,9 +1,12 @@
 service-hub-examples
 ====================
 
-This project contains simple examples for service-hub framework.
+This project contains examples for service-hub framework.
 
 Install
 =======
 
-You can install this example by cloning service-hub repository and running lein sub install on it. Preferably you should try in-memory-simple first. Both examples create in memory database accesible on https://localhost/products using GET and other similar methods.
+You run those examples by first cloning service-hub repository and running lein sub install on it, then you can try examples from this repository. 
+Preferably you should try in-memory-simple first. Both in-memory-simple and in-memory examples create services with in memory database back-end 
+and validation accesible on http://localhost/products using GET, PUT, POST and DELETE http verbs (RESTful interface). The in-memory sample adds
+validation with users and roles on top of that.
