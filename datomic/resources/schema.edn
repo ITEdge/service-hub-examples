@@ -22,15 +22,8 @@
  :db/cardinality :db.cardinality/many
  :db/doc "User roles"
  :db.install/_attribute :db.part/db}
-;; role
+;; role 
 {:db/id #db/id[:db.part/db]
- :db/ident :role/users
- :db/valueType :db.type/ref 
- :db/cardinality :db.cardinality/many
- :db/doc "Users assigned to this role"
- :db.install/_attribute :db.part/db}
- 
-{:db/id #db/id [:db.part/db]
  :db/ident :role/rolename
  :db/valueType :db.type/string
  :db/cardinality :db.cardinality/one
@@ -46,15 +39,15 @@
  :db/doc "Product name"
  :db.install/_attribute :db.part/db}
 
-{:db/id #db/id [:db.part/db]
- :db/ident :product/order-code
+{:db/id #db/id[:db.part/db]
+ :db/ident :product/orderCode
  :db/valueType :db.type/string
  :db/cardinality :db.cardinality/one
  :db/fulltext true
  :db/doc "Product order code"
  :db.install/_attribute :db.part/db}
 
-{:db/id #db/id [:db.part/db]
+{:db/id #db/id[:db.part/db]
  :db/ident :product/price
  :db/valueType :db.type/double
  :db/cardinality :db.cardinality/one
