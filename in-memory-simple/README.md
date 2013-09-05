@@ -14,7 +14,7 @@ Each REST call is validated by various validator functions, examine the product-
 itedge.service-hub-examples.in-memory.core.clj
 ``` 
 
-## Default port to acces service  
+## Default port to acces service
 
 The most convient way to run this example is to type lein repl at the project root and then type and submit 
 ```clojure

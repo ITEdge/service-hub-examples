@@ -17,7 +17,6 @@ and
 ```clojure
 :admin
 ```
-
 )
 * Roles (GET /roles - two default roles with rolenames 'user' and 'admin')
 * Products (GET /products - two default products with product names 'Product-1' and 'Product-2')
@@ -40,12 +39,19 @@ For example for the default admin/admin user, the Authorization header is:
 
 * Authorization: Basic YWRtaW46YWrtaW4=
 
-## Default port to acces service  
+Or when you use curl, then just run:
+
+``` sh
+curl -u admin:admin http://localhost:3000/users/
+```
+
+## Default port to acces service
 
 The most convient way to run this example is to type lein repl at the project root and then type and submit 
 ```clojure
 (use 'itedge.service-hub-examples.in-memory.core)
-``` 
+```
+
 - this will start the development server at http://localhost:3000,
 to stop the server, type and submit 
 
