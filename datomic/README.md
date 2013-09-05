@@ -7,9 +7,9 @@ HTTP BASIC authentication and validation of REST calls.
 The application is configured to provide data for 3 entity types, users, roles and products: 
 
 * Schema:
+
 ```clojure
 [
-;; user
 {:db/id #db/id[:db.part/db]
  :db/ident :user/username
  :db/unique :db.unique/value
@@ -32,7 +32,7 @@ The application is configured to provide data for 3 entity types, users, roles a
  :db/cardinality :db.cardinality/many
  :db/doc "User roles"
  :db.install/_attribute :db.part/db}
-;; role 
+ 
 {:db/id #db/id[:db.part/db]
  :db/ident :role/rolename
  :db/valueType :db.type/string
@@ -40,7 +40,7 @@ The application is configured to provide data for 3 entity types, users, roles a
  :db/fulltext true
  :db/doc "Role rolename"
  :db.install/_attribute :db.part/db}
-;; product
+
 {:db/id #db/id[:db.part/db]
  :db/ident :product/name
  :db/valueType :db.type/string
@@ -67,6 +67,7 @@ The application is configured to provide data for 3 entity types, users, roles a
 ```
 
 * Data:
+
 ```clojure
 [
 {:db/id #db/id[:db.part/user -1] :user/username "admin" :user/password "$2a$10$K83DHEqRZ7ZCpq0HK49lj.4XW/EvMw4XPQPSrIxWNVPsOhwFk8bHe" :user/roles #{#db/id[:db.part/user -2] #db/id[:db.part/user -3]}}
