@@ -13,4 +13,4 @@
 
 (def user-handler (handlers-datomic/create-handler conn #{:user/username :user/password :user/roles}))
 (def role-handler (handlers-datomic/create-handler conn #{:role/users :role/rolename}))
-(def product-handler (handlers-datomic/create-handler conn #{:product/name :product/order-code :product/price}))
+(def product-handler (handlers-datomic/create-handler conn #{:product/name :product/orderCode :product/price}))
