@@ -36,7 +36,7 @@
 
 (defroutes app-routes
   (GET "/login" [:as request]
-      (routes-util/check-auth request content-util/craft-edn-response))
+       (routes-util/check-auth request content-util/craft-edn-response))
   (routes-util/scaffold-crud-routes "/users" services/user-service :id edn/read-string content-util/craft-edn-response)
   (routes-util/scaffold-crud-routes "/roles" services/role-service :id edn/read-string content-util/craft-edn-response)
   (routes-util/scaffold-crud-routes "/products" services/product-service :id edn/read-string content-util/craft-edn-response))
@@ -45,13 +45,13 @@
 
 (def app
   (-> app-routes
-    (wrap-create-authentication credentials-fn)
-    (wrap-translate-params)
-    (wrap-keyword-params)
-    (wrap-nested-params)
-    (wrap-params)
-    (wrap-resource "public")
-    (wrap-file-info)))
+      (wrap-create-authentication credentials-fn)
+      (wrap-translate-params)
+      (wrap-keyword-params)
+      (wrap-nested-params)
+      (wrap-params)
+      (wrap-resource "public")
+      (wrap-file-info)))
 
 (defonce server (jetty/run-jetty app {:port 3000 :join? false}))
 
