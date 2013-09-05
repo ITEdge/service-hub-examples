@@ -8,7 +8,7 @@ and validation accesible on http://localhost/products using GET, PUT, POST and D
 validation with users and roles on the top of that. The most advanced sample is one with datomic as datasource, it has validation too.
 
 ## Running and testing samples
-After in-memory-simple is running, for simple listing of all producsts, you can access service with curl tool like that:
+After in-memory-simple is running, for the simple listing of all products, you can access the service with curl tool:
 
 ``` sh
 curl http://localhost:3000/products/
