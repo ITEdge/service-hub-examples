@@ -12,5 +12,5 @@
 @(d/transact conn data-tx)
 
 (def user-handler (handlers-datomic/create-handler conn #{:user/username :user/password :user/roles}))
-(def role-handler (handlers-datomic/create-handler conn #{:role/users :role/rolename}))
+(def role-handler (handlers-datomic/create-handler conn #{:role/rolename}))
 (def product-handler (handlers-datomic/create-handler conn #{:product/name :product/orderCode :product/price}))

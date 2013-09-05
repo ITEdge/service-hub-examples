@@ -24,13 +24,6 @@
  :db.install/_attribute :db.part/db}
 ;; role 
 {:db/id #db/id[:db.part/db]
- :db/ident :role/users
- :db/valueType :db.type/ref
- :db/cardinality :db.cardinality/many
- :db/doc "Role users"
- :db.install/_attribute :db.part/db}
-
-{:db/id #db/id[:db.part/db]
  :db/ident :role/rolename
  :db/valueType :db.type/string
  :db/cardinality :db.cardinality/one

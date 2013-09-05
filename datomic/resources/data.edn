@@ -1,7 +1,7 @@
 [
 {:db/id #db/id[:db.part/user -1] :user/username "admin" :user/password "$2a$10$K83DHEqRZ7ZCpq0HK49lj.4XW/EvMw4XPQPSrIxWNVPsOhwFk8bHe" :user/roles #{#db/id[:db.part/user -2] #db/id[:db.part/user -3]}}
-{:db/id #db/id[:db.part/user -2] :role/rolename "user" :role/users #{#db/id[:db.part/user -1]}}
-{:db/id #db/id[:db.part/user -3] :role/rolename "admin" :role/users #{#db/id[:db.part/user -1]}}
+{:db/id #db/id[:db.part/user -2] :role/rolename "user"}
+{:db/id #db/id[:db.part/user -3] :role/rolename "admin"}
 {:db/id #db/id[:db.part/user -4] :product/name "Product 1" :product/orderCode "P1" :product/price 12.2}
 {:db/id #db/id[:db.part/user -5] :product/name "Product 2" :product/orderCode "P2" :product/price 17.1}
 ]

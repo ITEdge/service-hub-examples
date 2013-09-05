@@ -9,7 +9,7 @@
 (def product-authorizator (authorizators/->ProductAuthorizator))
 
 (def user-validator (validators/->UserValidator handlers/user-handler :user/roles handlers/role-handler))
-(def role-validator (validators/->RoleValidator :role/users handlers/role-handler :user/roles handlers/user-handler))
+(def role-validator (validators/->RoleValidator handlers/user-handler :user/roles handlers/role-handler))
 (def product-validator (validators/->ProductValidator handlers/product-handler))
 
 (def user-service (services-util/scaffold-service handlers/user-handler user-validator user-authorizator))
