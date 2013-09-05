@@ -25,21 +25,21 @@
   PEntityServiceValidator
   (validate-find-entity [_ id]
     (util/pipeline-statements
-      (validators-util/validate-entity-present id product-handler)))
+     (validators-util/validate-entity-present id product-handler)))
   (validate-add-entity [_ attributes]
     (util/pipeline-statements
-      (validators-util/validate-insert-fields attributes #{:product_name :price :order_number})
-      (validators-util/validate-unique-fields attributes product-handler #{:product_name :order_number})))
+     (validators-util/validate-insert-fields attributes #{:product_name :price :order_number})
+     (validators-util/validate-unique-fields attributes product-handler #{:product_name :order_number})))
   (validate-update-entity [_ attributes]
     (util/pipeline-statements
-      (validators-util/validate-entity-still-there attributes product-handler)
-      (validators-util/validate-update-fields attributes #{:product_name :price :order_number})
-      (validators-util/validate-unique-fields attributes product-handler #{:product_name :order_number})))
+     (validators-util/validate-entity-still-there attributes product-handler)
+     (validators-util/validate-update-fields attributes #{:product_name :price :order_number})
+     (validators-util/validate-unique-fields attributes product-handler #{:product_name :order_number})))
   (validate-delete-entity [_ id]
     nil)
   (validate-list-entities [_ criteria sort-attrs from to]
     (util/pipeline-statements
-      (validators-util/validate-list-range from to criteria product-handler))))
+     (validators-util/validate-list-range from to criteria product-handler))))
 
 (def product-validator (->ProductValidator product-handler))
 
@@ -50,11 +50,11 @@
 
 (def app
   (-> app-routes
-    (wrap-translate-params)
-    (wrap-keyword-params)
-    (wrap-nested-params)
-    (wrap-params)
-    (wrap-resource "public")
-    (wrap-file-info)))
+      (wrap-translate-params)
+      (wrap-keyword-params)
+      (wrap-nested-params)
+      (wrap-params)
+      (wrap-resource "public")
+      (wrap-file-info)))
 
 (defonce server (jetty/run-jetty app {:port 3000 :join? false}))
