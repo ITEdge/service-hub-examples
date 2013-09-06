@@ -7,13 +7,11 @@ HTTP BASIC authentication and validation of REST calls.
 The application is configured to provide data for 3 entity types: 
 
 * Users (GET /users - one default user with username 'admin', password 'admin' and assigned roles: 
-
 ```clojure
 :user
-``` 
+```
 
 and 
-
 ```clojure
 :admin
 ```
@@ -26,7 +24,8 @@ and
 Each REST call is validated by various validator functions, dig into namespace 
 ```clojure
 itedge.service-hub-examples.in-memory.validators.clj
-``` 
+```
+ 
 to see more.
 
 ## Authentication
@@ -40,7 +39,6 @@ For example for the default admin/admin user, the Authorization header is:
 * Authorization: Basic YWRtaW46YWrtaW4=
 
 Or when you use curl, then just run:
-
 ``` sh
 curl -u admin:admin http://localhost:3000/users/
 ```
