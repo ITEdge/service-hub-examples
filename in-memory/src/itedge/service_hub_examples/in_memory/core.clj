@@ -22,7 +22,6 @@
 (defn user-func
   "Uses user service to retrieve user login information and transforms assigned roles into keyword set.
    If provided username is not in database, returns nil."
-  {:added "EBS 1.0"}
   [username]
   (-> (first (handle-list-entities handlers/user-handler {:username username} nil nil nil))
       ((fn [result]
@@ -37,9 +36,9 @@
 (defroutes app-routes
   (GET "/login" [:as request]
        (routes-util/check-auth request content-util/craft-edn-response))
-  (routes-util/scaffold-crud-routes "/users" services/user-service :id edn/read-string content-util/craft-edn-response)
-  (routes-util/scaffold-crud-routes "/roles" services/role-service :id edn/read-string content-util/craft-edn-response)
-  (routes-util/scaffold-crud-routes "/products" services/product-service :id edn/read-string content-util/craft-edn-response))
+  (routes-util/scaffold-crud-routes "/users" services/user-service :id edn/read-string content-util/craft-edn-response true)
+  (routes-util/scaffold-crud-routes "/roles" services/role-service :id edn/read-string content-util/craft-edn-response true)
+  (routes-util/scaffold-crud-routes "/products" services/product-service :id edn/read-string content-util/craft-edn-response true))
 
 (def credentials-fn (partial security/bcrypt-credential-fn user-func))
 
