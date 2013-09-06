@@ -46,7 +46,7 @@
 (def product-service (services-util/scaffold-service product-handler product-validator))
 
 (defroutes app-routes
-  (routes-util/scaffold-crud-routes "/products" product-service :id edn/read-string content-util/craft-edn-response))
+  (routes-util/scaffold-crud-routes "/products" product-service :id edn/read-string content-util/craft-edn-response true))
 
 (def app
   (-> app-routes
