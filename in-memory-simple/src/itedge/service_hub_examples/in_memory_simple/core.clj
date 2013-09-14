@@ -23,27 +23,27 @@
 
 (deftype ProductValidator [product-handler]
   PEntityServiceValidator
-  (validate-find-entity [_ id]
+  (validate-find-entity [_ id datasource]
     (util/pipeline-statements
-     (validators-util/validate-entity-present id product-handler)))
-  (validate-add-entity [_ attributes]
+     (validators-util/validate-entity-present id product-handler datasource)))
+  (validate-add-entity [_ attributes datasource]
     (util/pipeline-statements
      (validators-util/validate-insert-fields attributes #{:product_name :price :order_number})
-     (validators-util/validate-unique-fields attributes product-handler #{:product_name :order_number})))
-  (validate-update-entity [_ attributes]
+     (validators-util/validate-unique-fields attributes product-handler datasource #{:product_name :order_number})))
+  (validate-update-entity [_ attributes datasource]
     (util/pipeline-statements
-     (validators-util/validate-entity-still-there attributes product-handler)
+     (validators-util/validate-entity-still-there attributes product-handler datasource)
      (validators-util/validate-update-fields attributes #{:product_name :price :order_number})
-     (validators-util/validate-unique-fields attributes product-handler #{:product_name :order_number})))
-  (validate-delete-entity [_ id]
+     (validators-util/validate-unique-fields attributes product-handler datasource #{:product_name :order_number})))
+  (validate-delete-entity [_ id datasource]
     nil)
-  (validate-list-entities [_ criteria sort-attrs from to]
+  (validate-list-entities [_ criteria sort-attrs from to datasource]
     (util/pipeline-statements
-     (validators-util/validate-list-range from to criteria product-handler))))
+     (validators-util/validate-list-range from to criteria product-handler datasource))))
 
 (def product-validator (->ProductValidator product-handler))
 
-(def product-service (services-util/scaffold-service product-handler product-validator))
+(def product-service (services-util/scaffold-service product-handler product-validator (fn [] nil)))
 
 (defroutes app-routes
   (routes-util/scaffold-crud-routes "/products" product-service :id edn/read-string content-util/craft-edn-response true))
