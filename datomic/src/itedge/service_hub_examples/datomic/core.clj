@@ -1,9 +1,10 @@
-(ns itedge.service-hub-examples.datomic
+(ns itedge.service-hub-examples.datomic.core
   (:require [clojure.string :as string]
             [clojure.tools.reader.edn :as edn]
             [ring.adapter.jetty :as jetty]
             [itedge.service-hub.core.handlers :refer :all]
             [itedge.service-hub-examples.datomic.handlers :as handlers]
+            [itedge.service-hub-examples.datomic.db :as db]
             [itedge.service-hub-examples.datomic.services :as services]
             [compojure.core :refer :all]
             [compojure.handler :as handler]
@@ -23,16 +24,17 @@
   "Uses user service to retrieve user login information and transforms assigned roles into keyword set.
    If provided username is not in database, returns nil."
   [username]
-  (-> (first (handle-list-entities handlers/user-handler {:user/username username} nil nil nil))
-      ((fn [result]
-         (when result
-           (update-in result [:user/roles] (fn [roles] 
-                                             (into #{} (map (fn [role-id] 
-                                                              (keyword (:role/rolename (handle-find-entity handlers/role-handler role-id)))) roles)))))))
-      ((fn [result]
-         (when result
-           {:id (:db/id result) :username (:user/username result)
-            :password (:user/password result) :roles (:user/roles result)})))))
+  (let [db-value (db/get-db-value)]
+    (-> (first (handle-list-entities handlers/user-handler {:user/username username} nil nil nil db-value))
+        ((fn [result]
+           (when result
+             (update-in result [:user/roles] (fn [roles] 
+                                               (into #{} (map (fn [role-id] 
+                                                                (keyword (:role/rolename (handle-find-entity handlers/role-handler role-id db-value)))) roles)))))))
+        ((fn [result]
+           (when result
+             {:id (:db/id result) :username (:user/username result)
+              :password (:user/password result) :roles (:user/roles result)}))))))
 
 (defroutes app-routes
   (GET "/login" [:as request]
@@ -53,6 +55,7 @@
       (wrap-resource "public")
       (wrap-file-info)))
 
+(defonce database (db/setup-db))
 (defonce server (jetty/run-jetty app {:port 3000 :join? false}))
 
 
