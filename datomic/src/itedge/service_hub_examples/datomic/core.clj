@@ -41,7 +41,7 @@
        (routes-util/check-auth request content-util/craft-edn-response))
   (routes-util/scaffold-crud-routes "/users" services/user-service :db/id edn/read-string content-util/craft-edn-response true)
   (routes-util/scaffold-crud-routes "/roles" services/role-service :db/id edn/read-string content-util/craft-edn-response true)
-  (routes-util/scaffold-crud-routes "/products" services/product-service :db/id edn/read-string content-util/craft-edn-response true))
+  (routes-util/scaffold-crud-history-routes "/products" services/product-service :db/id edn/read-string content-util/craft-edn-response true))
 
 (def credentials-fn (partial security/bcrypt-credential-fn user-func))
 

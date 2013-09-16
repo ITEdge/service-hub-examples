@@ -16,7 +16,7 @@
 
 (def user-service (services-util/scaffold-service handlers/user-handler user-validator user-authorizator db/conn db/get-db-value))
 (def role-service (services-util/scaffold-service handlers/role-handler role-validator role-authorizator db/conn db/get-db-value))
-(def product-service (services-util/scaffold-service handlers/product-handler product-validator product-authorizator db/conn db/get-db-value))
+(def product-service (services-util/scaffold-history-enabled-service handlers/product-handler product-validator product-authorizator db/conn db/get-db-value))
 
 
 

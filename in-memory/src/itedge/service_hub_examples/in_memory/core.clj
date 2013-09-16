@@ -23,12 +23,12 @@
   "Uses user service to retrieve user login information and transforms assigned roles into keyword set.
    If provided username is not in database, returns nil."
   [username]
-  (-> (first (handle-list-entities handlers/user-handler {:username username} nil nil nil))
+  (-> (first (handle-list-entities handlers/user-handler {:username username} nil nil nil nil))
       ((fn [result]
          (when result
            (update-in result [:roles] (fn [roles] 
                                         (into #{} (map (fn [role-id] 
-                                                         (keyword (:rolename (handle-find-entity handlers/role-handler role-id)))) roles)))))))
+                                                         (keyword (:rolename (handle-find-entity handlers/role-handler role-id nil)))) roles)))))))
       ((fn [result]
          (when result
            (select-keys result [:id :username :password :roles]))))))

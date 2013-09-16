@@ -12,9 +12,9 @@
 (def role-validator (validators/->RoleValidator :users handlers/role-handler :roles handlers/user-handler))
 (def product-validator (validators/->ProductValidator handlers/product-handler))
 
-(def user-service (services-util/scaffold-service handlers/user-handler user-validator user-authorizator))
-(def role-service (services-util/scaffold-service handlers/role-handler role-validator role-authorizator))
-(def product-service (services-util/scaffold-service handlers/product-handler product-validator product-authorizator))
+(def user-service (services-util/scaffold-service handlers/user-handler user-validator user-authorizator nil (fn [] nil)))
+(def role-service (services-util/scaffold-service handlers/role-handler role-validator role-authorizator nil (fn [] nil)))
+(def product-service (services-util/scaffold-service handlers/product-handler product-validator product-authorizator nil (fn [] nil)))
 
 
 
