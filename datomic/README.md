@@ -1,7 +1,11 @@
 # Datomic sample
 
 This is an example of simple service-hub REST application with datomic handlers,
-HTTP BASIC authentication and validation of REST calls.
+HTTP BASIC authentication and validation of REST calls. As a demonstration for
+history capable service, the products service can be queried for its history,
+such as /products/id/history?param=value (for simple listing /products/id/history/)
+and there is also possiblity to get particular snapshot from entity history:
+/products/entity-id/history/history-id
 
 ## Default data
 The application is configured to provide data for 3 entity types, users, roles and products: 
@@ -83,7 +87,7 @@ The application is configured to provide data for 3 entity types, users, roles a
 Each REST call is validated by various validator functions, dig into namespace 
 ```clojure
 itedge.service-hub-examples.datomic.validators.clj
-``` 
+```
 to see more.
 
 ## Authentication
