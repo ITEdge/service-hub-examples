@@ -68,6 +68,7 @@
   PEntityHistoryServiceValidator
   (validate-find-entity-history [_ entity-id history-id db-value]
     (util/pipeline-statements
-     (validators-util/validate-entity-present entity-id product-handler db-value)))
+     (validators-util/validate-entity-history-present entity-id history-id product-handler db-value)))
   (validate-list-entity-history [_ id criteria sort-attrs from to db-value]
-    nil))
+    (util/pipeline-statements
+     (validators-util/validate-list-history-range from to id criteria product-handler db-value))))
