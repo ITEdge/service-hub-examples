@@ -3,8 +3,7 @@
             [itedge.service-hub-examples.datomic.handlers :as handlers]
             [itedge.service-hub-examples.datomic.validators :as validators]
             [itedge.service-hub-examples.datomic.authorizators :as authorizators]
-            [itedge.service-hub.core.services-util :as services-util]
-            [itedge.service-hub.persistence-datomic.handlers-datomic :as handlers-datomic]))
+            [itedge.service-hub.core.services-util :as services-util]))
 
 (def user-authorizator (authorizators/->UserAuthorizator))
 (def role-authorizator (authorizators/->RoleAuthorizator))
