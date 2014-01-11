@@ -8,7 +8,7 @@
 (defn setup-db []
   (let [schema-tx (read-string (slurp "resources/schema.edn"))
         data-tx (read-string (slurp "resources/data.edn"))]
-    @(transact conn schema-tx) 
+    @(transact conn schema-tx)
     @(transact conn data-tx)))
 
 (defn get-db-value []

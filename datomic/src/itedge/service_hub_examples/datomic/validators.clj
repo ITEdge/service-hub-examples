@@ -1,6 +1,6 @@
 (ns itedge.service-hub-examples.datomic.validators
-  (:use itedge.service-hub.core.validators)
   (:require [itedge.service-hub.core.util :as util]
+            [itedge.service-hub.core.validators :refer :all]
             [itedge.service-hub.core.validators-util :as validators-util]))
 
 (deftype UserValidator [user-handler role-key role-handler]

@@ -1,6 +1,6 @@
 (ns itedge.service-hub-examples.in-memory-simple.core
   (:require [clojure.tools.reader.edn :as edn]
-            [ring.adapter.jetty :as jetty]           
+            [ring.adapter.jetty :as jetty]
             [compojure.core :refer :all]
             [compojure.handler :as handler]
             [itedge.service-hub.core.handlers-memory :as handlers-memory]
@@ -14,7 +14,8 @@
             [ring.middleware.params :refer :all]
             [ring.middleware.keyword-params :refer :all]
             [ring.middleware.nested-params :refer :all]
-            [ring.middleware.file-info :refer :all]
+            [ring.middleware.content-type :refer :all]
+            [ring.middleware.not-modified :refer :all]
             [ring.middleware.resource :refer :all]))
 
 (def product-handler (handlers-memory/create-handler [{:product_name "product-1" :price 10 :order_number "P1"}
@@ -55,6 +56,7 @@
       (wrap-nested-params)
       (wrap-params)
       (wrap-resource "public")
-      (wrap-file-info)))
+      (wrap-content-type)
+      (wrap-not-modified)))
 
 (defonce server (jetty/run-jetty app {:port 3000 :join? false}))

@@ -16,7 +16,8 @@
             [ring.middleware.params :refer :all]
             [ring.middleware.keyword-params :refer :all]
             [ring.middleware.nested-params :refer :all]
-            [ring.middleware.file-info :refer :all]
+            [ring.middleware.content-type :refer :all]
+            [ring.middleware.not-modified :refer :all]
             [ring.middleware.resource :refer :all]))
 
 (defn user-func
@@ -26,8 +27,8 @@
   (-> (first (handle-list-entities handlers/user-handler {:username username} nil nil nil nil))
       ((fn [result]
          (when result
-           (update-in result [:roles] (fn [roles] 
-                                        (into #{} (map (fn [role-id] 
+           (update-in result [:roles] (fn [roles]
+                                        (into #{} (map (fn [role-id]
                                                          (keyword (:rolename (handle-find-entity handlers/role-handler role-id nil)))) roles)))))))
       ((fn [result]
          (when result
@@ -50,9 +51,7 @@
       (wrap-nested-params)
       (wrap-params)
       (wrap-resource "public")
-      (wrap-file-info)))
+      (wrap-content-type)
+      (wrap-not-modified)))
 
 (defonce server (jetty/run-jetty app {:port 3000 :join? false}))
-
-
-
